@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return {
                 id: i,
                 name: raw.name.replace(/-/g, " ").substr(0, raw.name.lastIndexOf(".")) || raw.name.replace(/-/g, " "),
-                rawName: raw.name.substr(0, raw.name.lastIndexOf(".")) || raw.name
+                rawName: raw.name.replace(/[^A-Za-z0-9]/g, "").substr(0, raw.name.lastIndexOf(".")) || raw.name.replace(/[^A-Za-z0-9]/g, "")
             };
         });
         
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if ($(this).val() < 1) {
             $("#search-view").html("<div class=\"search-item no-basis delta ale highlight-bg\">Search for an app.</div>");    
         } else {
-            var query = $(this).val();
+            var query = $(this).val().replace(/[^A-Za-z0-9]/g, "");
             var results = index.search(query).map(function(result) {
                 return caskList.filter(function(q) { return q.id === parseInt(result.ref, 10) })[0]
             });
