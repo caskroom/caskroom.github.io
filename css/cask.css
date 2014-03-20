@@ -62,7 +62,7 @@ input::-moz-focus-inner {
   font-weight: 500;
   font-style: normal;
 
-  src: url('klinicslabmedium.woff') format('woff');
+  src: url('/assets/klinicslabmedium.woff') format('woff');
 }
 
 body {
