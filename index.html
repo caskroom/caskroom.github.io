@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Homebrew Cask</title>
     <link rel="stylesheet" href="css/cask.css">
+	<link rel="stylesheet" href="css/mbExtruder.css">
     <script type="text/javascript" src="//use.typekit.net/ghx0nzu.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
@@ -100,7 +101,7 @@
                 <a href="//github.com/phinze/homebrew-cask" class="github">
                     <img src="assets/octocat.svg" class="octocat" alt="Octocat purrs and points its tentacles to the source">
                 </a>
-                <a href="/search" id="search-button" class="textual">search</a>
+                <a href="/search" id="search-button" class="textual search-button">search</a>
             </div>
         </div>
         
@@ -108,6 +109,19 @@
             <form class="search-bar column-main spacing">
                 <input type = "text" id = "search-input" placeholder = "cask name" autocomplete = "off" class = "delta highlight-bg">
             </form>
+					
+						<div id="brew-container" class="{title:'Build your own .brew file'}">
+							<h2>Build your own .brew file</h2>
+							<hr/>
+							<p>Store all your apps in a file called <b>~/.brew</b>. In order to install the apps you just have to run it.</p>
+							<p>Start <a href="/search" class="search-button">searching</a> for the apps, then click on "Add script to .brew" to build your own.</p>
+							<p>Copy and paste the code below into your new <b>~/.brew</b> file</p>
+							<div class="sh">
+								<pre>
+									<code id="brew-file"></code>
+								</pre>
+							</div>
+						</div>
         
             <div id="search-view" class="column-main">
                 <div class="search-item no-basis delta ale highlight-bg">
@@ -136,6 +150,7 @@
                         <code>$ brew cask install {{=item.caskName}}</code>
                       </div>
                       <a href="{{=item.caskUrl}}" class="zeta cask-source">Source</a>
+											<a href="#" class="zeta cask-source addScriptToBrew">Add script to <b>.brew</b></a>
                     </div>
                 </div>
             {{~}}
@@ -148,6 +163,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="js/lunr.min.js"></script>
     <script src="js/doT.min.js"></script>
+	<script src="js/jquery.mb.flipText.js"></script>
+		<script src="js/mbExtruder.js"></script>
     <script src="js/cask.js"></script>
 
 </body>
