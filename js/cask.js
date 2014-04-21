@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     var initialUrl = location.href,
         historyCanary = false;
+		var brewCasks = [];
     
     window.addEventListener("popstate", function() {
         var fauxPop = !historyCanary && location.href === initialURL;
@@ -57,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     /* Search */
     
-    $("#search-button").on("click", function(e) {
+    $("body").on("click", ".search-button", function(e) {
         history.pushState(null, null, "/");
         historyCanary = true;
         $("html, body").animate({ scrollTop: 0 }, 250).promise().done(function() {
@@ -129,4 +130,38 @@ document.addEventListener("DOMContentLoaded", function() {
           return false;
         }
     });
+	
+		$("#search-view").on("click", ".addScriptToBrew", function(e) {
+			try{
+				var script = $(this).parent().find( "code" ).text();
+				if (script != '') {
+					var scriptPrefix = script.indexOf( 'brew' );
+					var newScript = script.substr( scriptPrefix, script.length - scriptPrefix );
+					if ($("#brew-file").html().length == 0) {
+						$("#brew-file").append("#!/bin/bash\n");	
+					}
+					if (brewCasks.indexOf(newScript) >= 0 ) {
+						alert("You have already added this script");
+					} else {
+						brewCasks.push(newScript);
+						$("#brew-file").append(newScript + "\n");
+					}
+				}
+			
+			} catch( err ) {
+				alert("Sorry could not add this script");
+			}
+			e.preventDefault();
+			return false;
+		} );
+	
+		$("#brew-container").buildMbExtruder({
+			position:"right",
+			width:500,
+			extruderOpacity:.8,
+			textOrientation:"tb",
+			onExtOpen:function(){},
+			onExtContentLoad:function(){},
+			onExtClose:function(){}
+		});
 });
