@@ -248,6 +248,14 @@ input::-moz-placeholder {
   color: #93a1a1;
 }
 
+input[type="text"]:disabled::-webkit-input-placeholder {
+  color: #e6e2d0;
+}
+
+input[type="text"]:disabled::-moz-placeholder {
+  color: #e6e2d0;
+}
+
 
 /*
 ===============================================================================

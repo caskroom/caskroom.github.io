@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cask Search</title>
+    <link href="opensearch.xml" rel="search" title="caskroom" type="application/opensearchdescription+xml">
+    <link rel="stylesheet" href="css/cask.css">
+    <script type="text/javascript" src="//use.typekit.net/ghx0nzu.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+<body class="base-bg base-copy">
+
+    <header class="spacing">
+        <div class="title-wrap">
+            <a href="/">
+                <h1 class="title ale">
+                    <span class="delta">Homebrew</span><br>
+                    <span class="alpha">Cask</span>
+                </h1>
+            </a>
+        </div>
+        <h2 class="slogan spacing gamma darker">&ldquo;To install, drag this icon&hellip;&rdquo; no more!</h2>
+    </header>
+
+    <div id="search-page">
+        <form class="search-bar column-main spacing">
+            <input type = "text" id = "search-input" placeholder = "search" autocomplete = "off" class = "delta highlight-bg">
+        </form>
+
+        <div id="search-view" class="column-main">
+            <div class="search-item no-basis delta ale highlight-bg">Type to start searching.</div>
+        </div>
+    </div>
+
+
+    <script id="search" type="text/x-dot-template">
+        {{? it.length}}
+            {{~ it :item}}
+                <div class="search-item delta ale highlight-bg">
+                    {{=item.appName}}
+                    <div class="command">
+                      <div class="sh">
+                        <code>$ brew cask install {{=item.caskName}}</code>
+                      </div>
+                    </div>
+                </div>
+            {{~}}
+        {{??}}
+            <div class="search-item no-basis delta highlight-bg">
+                No Cask found. Why not <a href="https://github.com/caskroom/homebrew-cask/blob/master/CONTRIBUTING.md">contribute one</a>?
+            </div>
+        {{?}}
+    </script>
+
+    <script id="search-prompt" type="text/x-dot-template">
+        <div class="search-item no-basis delta ale highlight-bg">Type to start searching.</div>
+    </script>
+
+    <script id="search-unavailable-error" type="text/x-dot-template">
+        <div class="search-item no-basis delta red highlight-bg">Web search is currently unavailable.</div>
+    </script>
+
+    <script id="search-rate-limited-error" type="text/x-dot-template">
+        <div class="search-item no-basis delta red highlight-bg">
+            Web search is currently unavailable.<br>
+            <span class = "epsilon">We have received too many requests from your IP in the last hour, but you can try again later.</span>
+        </div>
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/doT.min.js"></script>
+    <script src="js/pre.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
