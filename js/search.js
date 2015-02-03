@@ -8,33 +8,36 @@ document.addEventListener("DOMContentLoaded", function() {
         query = matchQueryOnly.exec(decoded)[1];
 
     $("#search-input").val(query);
-    
+
     renderResults(query);
   }
-  
+
   var notifyUnavailable = function notifyUnavailable(jqXHR, errorThrown) {
-    var disable = function (r) {
-      $("#search-view").html(r);
+    var disable = function (r, d) {
+      $("#search-view").html(r(d));
       $("#search-input").prop("disabled", true);
     }
-    
+
     if  (jqXHR.status === 403 && jqXHR.getResponseHeader("X-RateLimit-Remaining") <= 0) {
-      disable(renderers.searchRateLimited);
+      var resetTime = jqXHR.getResponseHeader("X-RateLimit-Reset"),
+          minutesLeft = Math.ceil((resetTime - Math.floor(Date.now() / 1000)) / 60);
+
+      disable(renderers.searchRateLimited, { timeLeftInMinutes: minutesLeft });
     } else {
       disable(renderers.searchUnavailable);
     }
   }
-  
+
   var loadCasks = function loadCasks(data) {
     caskList = pre.indexCaskData(data)
     if (queryURL) searchFromURL(queryURL);
   }
-  
+
   var caskList;
   pre.retrieveCaskData(loadCasks, notifyUnavailable);
-  
+
   /* Rendering */
-  
+
   var renderers = { search: doT.template($("#search").html()),
                     searchPrompt: doT.template($("#search-prompt").html()),
                     searchUnavailable: doT.template($("#search-unavailable-error").html()),
