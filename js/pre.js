@@ -7,7 +7,7 @@
       var caskFileName = /^Casks\/(.+).rb/.exec(el.path)[1];
       return { id: i,
                caskName: caskFileName,
-               appName: caskFileName.replace(/-/g, " "),
+               appName: caskFileName,
                entryName: caskFileName.replace(/[^A-Za-z0-9]/g, ""),
                caskUrl: el.url }
     };
