@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   var search = function search(q) {
     var queryString = q.replace(/[^A-Za-z0-9]/g, ""),
-        regexp = new RegExp(queryString);
+        regexp = new RegExp(queryString, "i");
 
     var results = caskList.filter(function(el) { return regexp.test(el.entryName) })
     return results;
