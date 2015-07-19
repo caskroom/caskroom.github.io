@@ -5,6 +5,6 @@
   <InputEncoding>UTF-8</InputEncoding>
   <OutputEncoding>UTF-8</OutputEncoding>
   <ShortName>caskroom.io</ShortName>
-  <Url type="text/html" rel="results" method="GET" template="http://caskroom.io/?q={searchTerms}" />
+  <Url type="text/html" rel="results" method="GET" template="http://caskroom.io/search?q={searchTerms}" />
   <Url type="application/opensearchdescription+xml" rel="self" method="GET" template="http://caskroom.io/opensearch.xml" />
 </OpenSearchDescription>
