@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   var loadCasks = function loadCasks(data) {
+    $('#search-input').attr('disabled', false).focus();
     caskList = pre.indexCaskData(data)
     if (queryURL) searchFromURL(queryURL);
   }
