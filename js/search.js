@@ -86,4 +86,6 @@ document.addEventListener("DOMContentLoaded", function() {
       return false;
     }
   });
+
+  new Clipboard('.sh-copy-btn');  // copy code to clipboard
 });

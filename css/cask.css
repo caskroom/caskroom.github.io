@@ -335,9 +335,35 @@ section {
 }
 
 .sh {
+  position: relative;
   margin-top: 0.8rem;
   margin-bottom: 0.2rem;
   padding: 1rem;
+}
+
+.sh-copy-btn {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  height: 32px;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #fdf6e3;
+  border: 1px solid #eee8d5;
+  border-radius: 2px;
+}
+
+.sh-copy-btn:hover {
+  background-color: #eee8d5;
+}
+
+.svg-clippy {
+  position: relative;
+  top: -3px;
+  right: -2px;
+  width: 18px;
+  height: 20px;
+  fill: #586e75;
 }
 
 .install {
