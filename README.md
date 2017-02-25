@@ -1,4 +1,4 @@
-# http://caskroom.io
+# https://caskroom.github.io
 The website of [Homebrew Cask](https://github.com/phinze/homebrew-cask), a command-line interface for the administration of Mac applications.
 
 ## Setup
