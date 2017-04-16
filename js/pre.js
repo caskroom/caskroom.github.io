@@ -34,7 +34,7 @@
   }
 
   exports.commitTreeURL = commitTreeURL;
-  exports.contribURL = "https://api.github.com/repos/caskroom/homebrew-cask/contributors?per_page=1";
+  exports.contribURL = "https://api.github.com/repos/caskroom/homebrew-cask/contributors?per_page=1&anon=1";
   exports.retrieveCaskData = retrieveCaskData;
   exports.isCaskFile = isCaskFile;
   exports.indexCaskData = indexCaskData;
