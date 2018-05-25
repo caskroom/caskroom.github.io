@@ -1,5 +1,5 @@
 (function(exports) {
-  var commitTreeURL = "https://api.github.com/repos/caskroom/homebrew-cask/commits?per_page=1";
+  var commitTreeURL = "https://api.github.com/repos/Homebrew/homebrew-cask/commits?per_page=1";
   var isCaskFile = function isCaskfile(el) { return /^Casks\/.+\.rb/.test(el.path) };
 
   var indexCaskData = function indexCaskData(data) {
@@ -19,7 +19,7 @@
   var request = function request(url) { return $.ajax({ url: url, type: "GET" })};
 
   var latestTreeURL = function latestTreeURL(data) {
-    return "https://api.github.com/repos/caskroom/homebrew-cask/git/trees/"
+    return "https://api.github.com/repos/Homebrew/homebrew-cask/git/trees/"
             + data[0].sha
             + "?recursive=1";
   }
@@ -34,7 +34,7 @@
   }
 
   exports.commitTreeURL = commitTreeURL;
-  exports.contribURL = "https://api.github.com/repos/caskroom/homebrew-cask/contributors?per_page=1&anon=1";
+  exports.contribURL = "https://api.github.com/repos/Homebrew/homebrew-cask/contributors?per_page=1&anon=1";
   exports.retrieveCaskData = retrieveCaskData;
   exports.isCaskFile = isCaskFile;
   exports.indexCaskData = indexCaskData;
